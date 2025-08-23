@@ -53,6 +53,10 @@ async function checkStore() {
             return storeResponse;
         } else {
             storeResponse.msg = "Out of Stock";
+            bot.sendMessage(
+                process.env.TELEGRAM_CHAT_ID,
+                "Still out of stock :("
+            );
             return storeResponse;
         }
     } catch (e) {
@@ -63,7 +67,7 @@ async function checkStore() {
 
 async function main() {
     await checkStore();
-    bot.sendMessage(process.env.TELEGRAM_CHAT_ID, "Github Action is working...")
+    // bot.sendMessage(process.env.TELEGRAM_CHAT_ID, "Github Action is working...")
     console.log(storeResponse);
 }
 
