@@ -4,7 +4,7 @@ const TelegramBot = require("node-telegram-bot-api");
 
 const telegramToken = process.env.TELEGRAM_TOKEN;
 
-const bot = new TelegramBot(telegramToken, { polling: true });
+const bot = new TelegramBot(telegramToken, { polling: false });
 
 const config = {
     method: process.env.METHOD,
@@ -46,14 +46,14 @@ async function checkStore() {
         if (inventory_quantity > inventory_low_stock_quantity) {
             storeResponse.msg = "In Stock";
             storeResponse.inStock = true;
-            bot.sendMessage(
+            await bot.sendMessage(
                 process.env.TELEGRAM_CHAT_ID,
                 "Amul Whey Protein is now in stock. Hurry Up!"
             );
             return storeResponse;
         } else {
             storeResponse.msg = "Out of Stock";
-            bot.sendMessage(
+            await bot.sendMessage(
                 process.env.TELEGRAM_CHAT_ID,
                 "Still out of stock :("
             );

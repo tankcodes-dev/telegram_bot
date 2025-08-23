@@ -2,21 +2,27 @@ name: Stock Checker
 
 on:
   schedule:
-    - cron: "*/5 * * * *"   # runs every 5 minutes
-  workflow_dispatch:        # manual run
+    - cron: "*/5 * * * *"   # runs every 5 minutes (UTC)
+  workflow_dispatch:        # manual trigger
 
 jobs:
   check-stock:
     runs-on: ubuntu-latest
     steps:
+      - name: Workflow started
+        run: echo "GitHub Action started at $(date -u)"
+
       - uses: actions/checkout@v3
+
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 20
+
       - name: Install dependencies
         run: npm install
-      - name: Run script
+
+      - name: Run stock checker
         run: node index.js
         env:
           METHOD: ${{ secrets.METHOD }}
@@ -39,3 +45,6 @@ jobs:
           COOKIE: ${{ secrets.COOKIE }}
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+
+      - name: Workflow finished
+        run: echo "GitHub Action finished at $(date -u)"
