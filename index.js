@@ -1,10 +1,6 @@
 require("dotenv").config();
 const axios = require("axios");
-const TelegramBot = require("node-telegram-bot-api");
-
-const telegramToken = process.env.TELEGRAM_TOKEN;
-
-const bot = new TelegramBot(telegramToken, { polling: false });
+const sendMessage = require("./telegram");
 
 const config = {
     method: process.env.METHOD,
@@ -46,17 +42,11 @@ async function checkStore() {
         if (inventory_quantity > inventory_low_stock_quantity) {
             storeResponse.msg = "In Stock";
             storeResponse.inStock = true;
-            await bot.sendMessage(
-                process.env.TELEGRAM_CHAT_ID,
-                "Amul Whey Protein is now in stock. Hurry Up!"
-            );
+            await sendMessage("Amul Whey Protein is now in stock. Hurry Up!");
             return storeResponse;
         } else {
             storeResponse.msg = "Out of Stock";
-            await bot.sendMessage(
-                process.env.TELEGRAM_CHAT_ID,
-                "Still out of stock :("
-            );
+            await sendMessage("Still out of stock :(");
             return storeResponse;
         }
     } catch (e) {
