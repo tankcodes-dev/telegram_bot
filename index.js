@@ -63,6 +63,7 @@ async function checkStore() {
 
 async function main() {
     await checkStore();
+    bot.sendMessage(process.env.TELEGRAM_CHAT_ID, "Github Action is working...")
     console.log(storeResponse);
 }
 
