@@ -46,7 +46,6 @@ async function checkStore() {
             return storeResponse;
         } else {
             storeResponse.msg = "Out of Stock";
-            await sendMessage("Still out of stock :(");
             return storeResponse;
         }
     } catch (e) {

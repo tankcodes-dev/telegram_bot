@@ -2,7 +2,7 @@ name: Stock Checker
 
 on:
     schedule:
-        - cron: "*/6 * * * *" # runs every 6 minutes (UTC)
+        - cron: "*/5 * * * *" # runs every 6 minutes (UTC)
     workflow_dispatch: # manual trigger
 
 jobs:
