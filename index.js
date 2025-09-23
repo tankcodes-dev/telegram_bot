@@ -49,6 +49,7 @@ async function checkStore() {
             return storeResponse;
         }
     } catch (e) {
+        await sendMessage("There is some error. Please check.");
         storeResponse.msg = `Error in fetching data: ${e.msg}`;
         return storeResponse;
     }
@@ -56,7 +57,6 @@ async function checkStore() {
 
 async function main() {
     await checkStore();
-    // bot.sendMessage(process.env.TELEGRAM_CHAT_ID, "Github Action is working...")
     console.log(storeResponse);
 }
 
