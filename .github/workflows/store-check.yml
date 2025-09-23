@@ -28,6 +28,7 @@ jobs:
                   METHOD: ${{ secrets.METHOD }}
                   MAX_BODY_LENGTH: ${{ secrets.MAX_BODY_LENGTH }}
                   URL: ${{ secrets.URL }}
+                  URL2: ${{ secrets.URL2 }}
                   ACCEPT: ${{ secrets.ACCEPT }}
                   ACCEPT_LANGUAGE: ${{ secrets.ACCEPT_LANGUAGE }}
                   BASE_URL: ${{ secrets.BASE_URL }}
