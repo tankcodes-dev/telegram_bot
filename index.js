@@ -19,7 +19,7 @@ const config = {
         "sec-fetch-dest": process.env.SEC_FETCH_DEST,
         "sec-fetch-mode": process.env.SEC_FETCH_MODE,
         "sec-fetch-site": process.env.SEC_FETCH_SITE,
-        tid: process.env.TID,
+        tid: Date.now() + process.env.TID,
         "user-agent": process.env.USER_AGENT,
         Cookie: process.env.COOKIE,
     },
