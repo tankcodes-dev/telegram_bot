@@ -32,6 +32,7 @@ jobs:
                   ACCEPT: ${{ secrets.ACCEPT }}
                   ACCEPT_LANGUAGE: ${{ secrets.ACCEPT_LANGUAGE }}
                   BASE_URL: ${{ secrets.BASE_URL }}
+                  BASE_URL2: ${{ secrets.BASE_URL2 }}
                   FRONTEND: ${{ secrets.FRONTEND }}
                   PRIORITY: ${{ secrets.PRIORITY }}
                   REFERER: ${{ secrets.REFERER }}

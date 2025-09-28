@@ -33,6 +33,7 @@ const storeResponse = {
 async function checkStore2() {
 	try {
 		config.url = process.env.URL2;
+		config.headers.base_url = process.env.BASE_URL2
 		const response = await axios.request(config);
 
 		const inventory_low_stock_quantity = parseInt(
