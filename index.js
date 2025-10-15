@@ -55,7 +55,7 @@ async function checkStore2() {
 		}
 	} catch (e) {
 		await sendMessage("There is some error in store 2. Please check.");
-		storeResponse.msg = `Error in fetching data: ${e.msg}`;
+		storeResponse.msg = `Error in fetching data: ${e}`;
 		return storeResponse;
 	}
 }
