@@ -31,10 +31,11 @@ const storeResponse = {
 };
 
 async function checkStore2() {
+	let response;
 	try {
 		config.url = process.env.URL2;
-		config.headers.base_url = process.env.BASE_URL2
-		const response = await axios.request(config);
+		config.headers.base_url = process.env.BASE_URL2;
+		response = await axios.request(config);
 
 		const inventory_low_stock_quantity = parseInt(
 			response.data.data[0].inventory_low_stock_quantity
@@ -55,7 +56,7 @@ async function checkStore2() {
 		}
 	} catch (e) {
 		await sendMessage("There is some error in store 2. Please check.");
-		storeResponse.msg = `Error in fetching data: ${e}`;
+		storeResponse.msg = `Error in fetching data: ${e} \nResponse:${response.data}`;
 		return storeResponse;
 	}
 }
